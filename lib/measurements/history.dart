@@ -5,10 +5,7 @@ class MeasurementHistoryScreen extends StatelessWidget {
   final List<Map<String, dynamic>> history = [
     {"temperature": 25.3, "weight": 68.5, "smokeDetection": false, "time": "08:00"},
     {"temperature": 26.1, "weight": 67.8, "smokeDetection": true, "time": "10:30"},
-    {"temperature": 24.8, "weight": 69.0, "smokeDetection": false, "time": "13:00"},
-    {"temperature": 27.2, "weight": 68.2, "smokeDetection": false, "time": "15:45"},
-    {"temperature": 25.0, "weight": 68.0, "smokeDetection": true, "time": "18:20"},
-  ];
+    ];
 
   @override
   Widget build(BuildContext context) {

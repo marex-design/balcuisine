@@ -11,7 +11,7 @@ class MeasurementScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Mesures en Temps Réel",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
