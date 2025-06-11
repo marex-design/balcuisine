@@ -1,9 +1,30 @@
- import 'package:flutter/material.dart';
+import 'package:balcuisine/auth/data/auth_repository_impl.dart';
+import 'package:balcuisine/auth/domain/usecases/sign_in_usecase.dart';
+import 'package:balcuisine/auth/ui/bloc/auth_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+ 
+import 'measurements/ui/bloc/screens/splash_screen.dart';
 
-import 'measurements/presentation/splashscreen.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
-void main() {
-  runApp(const MyApp());
+  final firebaseAuth = FirebaseAuth.instance;
+  final authRepository = AuthRepositoryImpl(firebaseAuth);
+  final signInUseCase = SignInUseCase(authRepository);
+
+  runApp(
+    RepositoryProvider.value(
+      value: authRepository,
+      child: BlocProvider(
+        create: (_) => AuthBloc(signInUseCase),
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,9 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home:  SplashScreen(),
     );
   }
 }
-
-

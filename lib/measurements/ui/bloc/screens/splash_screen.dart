@@ -1,8 +1,10 @@
 import 'dart:async';
-  import 'package:balcuisine/measurements/history.dart';
- import 'package:flutter/material.dart';
+import 'package:balcuisine/auth/ui/widgets/login_form.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-// Splash Screen
+import 'package:balcuisine/measurements/ui/bloc/screens/history.dart';
+ 
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -12,12 +14,27 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5), () {
+    _checkLoginStatus();
+  }
+
+  void _checkLoginStatus() async {
+    await Future.delayed(const Duration(seconds: 3)); // Garde le splash un peu visible
+
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      // Utilisateur connecté → Page des mesures
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) =>   MeasurementHistoryScreen()),
+        MaterialPageRoute(builder: (context) => MeasurementHistoryScreen()),
       );
-    });
+    } else {
+      // Pas connecté → Page de login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LoginForm()),
+      );
+    }
   }
 
   @override
