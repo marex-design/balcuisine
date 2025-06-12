@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/entities/measurement.dart';
- 
 
- 
 class MeasurementModel extends Measurement {
   MeasurementModel({
     required double temperature,
@@ -22,14 +20,14 @@ class MeasurementModel extends Measurement {
   factory MeasurementModel.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
 
-    Timestamp timestamp = data['timestamp'] as Timestamp;
+    print("📄 Document reçu : $data"); // Ajoute ceci pour debug
 
     return MeasurementModel(
-      temperature: (data['temperature'] as num).toDouble(),
-      weight: (data['weight'] as num).toDouble(),
-      smokeDetection: data['smokeDetection'] as bool,
-      humidity: (data['humidity'] as num).toDouble(),   
-      dateTime: timestamp.toDate(),
+      temperature: data['temperature']?.toDouble() ?? 0.0,
+      humidity: data['humidity']?.toDouble() ?? 0.0,
+      weight: data['weight']?.toDouble() ?? 0.0,
+      smokeDetection: data['smokeDetection'] ?? false,
+      dateTime: (data['dateTime'] as Timestamp).toDate(),
     );
   }
 
@@ -39,7 +37,7 @@ class MeasurementModel extends Measurement {
       'temperature': temperature,
       'weight': weight,
       'smokeDetection': smokeDetection,
-      'humidity': humidity,                
+      'humidity': humidity,
       'timestamp': Timestamp.fromDate(dateTime),
     };
   }

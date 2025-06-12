@@ -4,6 +4,7 @@ class Measurement {
   final bool smokeDetection;
   final double humidity;    
   final DateTime dateTime;
+  
 
   Measurement({
     required this.temperature,

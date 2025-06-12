@@ -1,3 +1,4 @@
+import 'package:balcuisine/measurements/ui/bloc/screens/history.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/auth_bloc.dart';
@@ -34,52 +35,65 @@ class _LoginFormState extends State<LoginForm> {
           );
         } else if (state is AuthSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Connexion réussie !'), backgroundColor: Colors.green),
+            const SnackBar(
+                content: Text('Connexion réussie !'),
+                backgroundColor: Colors.green),
           );
-          // Naviguer vers page suivante
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (_) => MeasurementHistoryScreen()),
+          );
         }
       },
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text("Bienvenue", style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 32),
-                  TextField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      labelText: "Email",
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: _passwordController,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: "Mot de passe",
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: state is AuthLoading ? null : _onLoginPressed,
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        backgroundColor: Colors.blue.shade700,
+        return Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text("Balance Electronique",
+                        style: Theme.of(context).textTheme.headlineMedium),
+                    const SizedBox(height: 32),
+                    TextField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: "Email",
+                        border: OutlineInputBorder(),
                       ),
-                      child: state is AuthLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text("Se connecter", style: TextStyle(fontSize: 16)),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 16),
+                    TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        labelText: "Mot de passe",
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed:
+                            state is AuthLoading ? null : _onLoginPressed,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          backgroundColor: Colors.blue.shade700,
+                        ),
+                        child: state is AuthLoading
+                            ? const CircularProgressIndicator(
+                                color: Colors.white)
+                            : const Text("Se connecter",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                )),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

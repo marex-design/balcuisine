@@ -1,0 +1,11 @@
+FirebaseFirestore.instance.collection('measurements').add({
+    'temperature': 24.5,
+    'humidity': 65.0,
+    'weight': 3.2,
+    'smokeDetection': false,
+    'dateTime': Timestamp.now(),
+  }).then((_) {
+    print("Mesure de test ajoutée");
+  }).catchError((error) {
+    print("Erreur : $error");
+  });

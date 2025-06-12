@@ -10,13 +10,16 @@ class MeasurementRepositoryImpl implements MeasurementRepository {
 
   @override
   Stream<List<Measurement>> getMeasurements() {
-    // Collection "measurements", tri par timestamp descendant
     return firestore
         .collection('measurements')
-        .orderBy('timestamp', descending: true)
+        .orderBy('dateTime', descending: true)
         .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map((doc) => MeasurementModel.fromFirestore(doc))
-            .toList());
+        .map((snapshot) {
+      final list = snapshot.docs
+          .map((doc) => MeasurementModel.fromFirestore(doc))
+          .toList();
+      print("Mesures récupérées !!!!! ${list.length}");
+      return list;
+    });
   }
 }
