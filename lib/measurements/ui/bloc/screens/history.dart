@@ -70,6 +70,7 @@ class MeasurementHistoryScreen extends StatelessWidget {
               title: const Text('À propos'),
               onTap: () {
                 Navigator.pop(context);
+                
                 showAboutDialog(
                   context: context,
                   applicationName: 'Mesures Electroniques',
@@ -138,10 +139,6 @@ class MeasurementHistoryScreen extends StatelessWidget {
     final String timeFormatted = DateFormat.Hm('fr_FR').format(dateTime);
 
 
-
-
-    
-
    // final timeFormatted =
        // "${measurement.dateTime.hour.toString().padLeft(2, '0')}:${measurement.dateTime.minute.toString().padLeft(2, '0')}";
 
@@ -154,7 +151,7 @@ class MeasurementHistoryScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Date : $dayName | $dateFormatted  |$timeFormatted",
+              "Date : $dayName |$dateFormatted  |$timeFormatted",
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,

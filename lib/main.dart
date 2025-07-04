@@ -26,8 +26,6 @@ void main() async {
   final firestore = FirebaseFirestore.instance;
 
   final measurementRepository = MeasurementRepositoryImpl(firestore);
-
-
   //FirebaseFirestore.instance.collection('measurements').add({
     //'temperature': 24.5,
     //'humidity': 65.0,
