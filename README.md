@@ -1,4 +1,4 @@
-# balcuisine
+# Balcuisine
 
 ## Description
 
@@ -73,12 +73,9 @@ Activer l’authentification par email/mot de passe et configurer la Realtime Da
 ## Contribution
 Les contributions sont les bienvenues !
 Merci de :
-
-Forker ce dépôt.
-
-Créer une branche dédiée (git checkout -b feature/ma-fonctionnalité).
-
-Soumettre une Pull Request claire et documentée.
+- Forker ce dépôt.
+- Créer une branche dédiée (git checkout -b feature/ma-fonctionnalité).
+- Soumettre une Pull Request claire et documentée.
 
 ## Licence
 Ce projet est sous licence MIT — voir le fichier LICENSE pour plus de détails.
