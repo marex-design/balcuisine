@@ -22,8 +22,7 @@ dans le cadre du cours de **Mesures électroniques** à la
 - Authentification sécurisée via email et mot de passe grâce à Firebase Auth.  
 - Lecture et affichage en temps réel des mesures (poids, température, humidité).  
 - Navigation fluide entre écrans : connexion, lecture des mesures, menu, et section « À propos ».  
-- Synchronisation bidirectionnelle entre l’application mobile et le dispositif embarqué (ESP32/PSoC).  
-- Support multiplateforme (Android et iOS) via Flutter.
+ - Support multiplateforme (Android et iOS) via Flutter.
 
 ---
 
