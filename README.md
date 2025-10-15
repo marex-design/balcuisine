@@ -48,7 +48,7 @@ dans le cadre du cours de **Mesures électroniques** à la
 1. Cloner le dépôt :
 
    ```bash
-   git clone https://github.com/Maruba22/balcuisine.git
+   git clone https://github.com/marex-design/balcuisine.git
    cd balcuisine
 
 
